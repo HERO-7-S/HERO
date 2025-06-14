@@ -1,0 +1,23 @@
+ body{
+  background-color: Aqua;
+}
+
+#gras {
+  font-weight: bold;
+}
+
+.italique {
+  font-style: italic;
+}
+
+[classe~="item-highlight"]{
+  color: blue;
+}
+
+[classe^="a"] {
+  background-color: yellow;
+}
+
+[classe$="date"] {
+  background-color: green;
+}

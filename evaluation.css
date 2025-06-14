@@ -1,0 +1,18 @@
+ body{
+  background-color: khaki;
+}
+
+.highlight{
+	color: blue;
+font-weight: bold;
+}
+
+li{
+color:darkorange;
+}
+
+.special {
+background-color: gray;
+border: 2px solid;
+}
+
