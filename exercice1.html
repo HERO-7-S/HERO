@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Activité Numéro 4: JavaScript </title>
+</head>
+<body>
+
+<h1>Titre : Activité Pratique JavaScript : Ecrire des scripts Javascript et les intégrer dans HTML</h1>
+
+
+<h2>Exercice 1</h2>
+
+<br>
+  <h3>1-Entrez votre âge</h3>
+
+  <input type="number" id="ageEntré" placeholder="Votre âge" min="1">
+  
+  <button onclick="verifierAge()">Vérifier</button>
+
+  <p id="message"></p>
+
+ <!-- Le lien vers le fichier JavaScript -->
+  <script src="exercice1.js"></script>
+
+
+
+<br>
+ <h3>2-Vérifiez si un nombre est pair ou impair</h3>
+
+  <input type="number" id="nombreEntré" placeholder="Entrez un nombre">
+  
+  <button id="btnVerifier">Vérifier</button>
+
+  <p id="resultat"></p>
+
+  <script src="exercice1.js"></script>
+
+
+
+<br>
+  <h3>3-programme qui prend en entrée le mois actuel (sous forme de nombre) et affiche le nom du mois correspondant.</h3>
+
+  <input type="number" id="moisInput" placeholder=" Saisir un nombre entre 1 et 12" min="1" max="12">
+  
+  <button id="btnAfficher">Afficher le mois</button>
+
+  <p id="affichageMois"></p>
+
+  <script src="script.js"></script>
+
+
+
+
+
+<br>
+<h2>Exercice 2</h2>
+
+<h3>1-programme qui utilise une boucle for pour afficher les nombres de 1 à 10.  </h3>   
+   <script>
+        for (let i = 1; i <= 10; i++) {
+           document.write(i + "<br>");
+        }
+    </script>
+
+
+<br>
+<h3>2-programme qui utilise une boucle while pour calculer la somme des entiers de 1 à 100</h3>
+
+<script>
+        let somme = 0;
+        let i = 1;
+        while (i <= 100) {
+            somme += i;
+            i++;
+			} 
+        document.write("La somme des entiers de 1 à 100 est : " + somme);
+    </script>
+
+
+
+
+<br>
+<h3>3-programme qui utilise une boucle do-while pour demander à l'utilisateur de deviner un nombre secret entre 1 et 100. </h3>
+
+  <button onclick="jouer()">Deviner le nombre</button>
+    
+    <script>
+ function jouer() {
+const secret = 1015;
+let essais = 0;
+          
+ while(true) {
+ let reponse = prompt("Devine le nombre (entre 1 et 100):");
+ essais++;
+                
+if(reponse == secret) {
+  alert(`Bravo ! Trouvé en ${essais} essais`);
+  break;
+    }
+alert(reponse < secret ? "Plus grand !" : "Plus petit !");
+    }
+    }
+    </script>
+
+
+ 
+
+
+<h3>4-Générateur de Fibonacci</h3>
+<button onclick="fibonacci()">Générer</button>
+    <pre id="result"></pre>
+
+    <script>
+        function fibonacci() {
+            const n = parseInt(prompt("Nombre de termes :"));
+            if (!n || n <= 0) return alert("Nombre invalide");
+            
+            let suite = [0, 1].slice(0, n);
+            for (let i = 2; i < n; i++) 
+                suite.push(suite[i-1] + suite[i-2]);
+            
+            document.getElementById("result").textContent = 
+                `${n} termes : ${suite.join(", ")}`;
+        }
+    </script>
+
+
+
+
+<br>
+<h2>Exercice 3</h2>
+
+<h3>1-Programme qui affiche tous les nombres premiers entre 1 et 100.<h3> 
+<script>
+for (let n = 2; n <= 100; n++) {
+    let premier = true;
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) {
+            premier = false;
+            break;
+        }
+    }
+    if (premier) document.write(n + " ");
+}
+</script>
+
+
+
+<br>
+<h3>2-Programme qui trouve et affiche les facteurs d'un nombre saisi par l'utilisateur. <h3> 
+
+<button onclick="trouverFacteurs()">Trouver les facteurs</button>
+<script>
+function trouverFacteurs() {
+    const nombre = parseInt(prompt("Entrez un nombre :"));
+    const facteurs = [];
+    for (let i = 1; i <= nombre; i++) {
+        if (nombre % i === 0) facteurs.push(i);
+    }
+    alert("Facteurs : " + facteurs.join(", "));
+}
+</script>
+
+
+
+
+<br>
+<h3>3-programme qui calcule la moyenne des nombres positifs saisis par l'utilisateur et qui cesse de demander des nombres lorsque l'utilisateur entre un nombre négatif.  <h3> 
+
+<button onclick="
+  const input = prompt('Entrez des nombres séparés par des virgules (un seul négatif annule tout):');
+  
+  // Vérification stricte
+  const nombres = input.split(',')
+  .map(s => parseFloat(s.trim()));
+  
+  // Détection d'au moins un négatif
+  if (nombres.some(n => n < 0)) {
+    alert('Opération annulée : nombre négatif détecté');
+    return;
+  }
+  
+  // Filtrage des NaN et calcul
+  const valides = nombres.filter(n => !isNaN(n));
+  if (valides.length === 0) {
+    alert('Aucun nombre valide saisi');
+    return;
+  }
+  
+  // Affichage si tout est valide et positif
+  const moyenne = valides.reduce((a,b) => a+b)/valides.length;
+  alert(`Nombres: ${valides.join(', ')}\nMoyenne: ${moyenne.toFixed(2)}`);
+">Calculer Moyenne</button>
+
+
+
+
+<br>
+<h3>4- Programme qui génère et affiche un motif triangulaire en utilisant des étoiles. <h3> 
+
+
+<input type="number" id="hauteur" min="1" value=" ">
+<button onclick="genererTriangle()">Générer</button>
+<pre id="triangle"></pre>
+
+<script>
+function genererTriangle() {
+    const hauteur = document.getElementById("hauteur").value;
+    let triangle = "";
+    
+    for (let i = 1; i <= hauteur; i++) {
+        triangle += "*".repeat(i) + "\n";
+    }
+    
+    document.getElementById("triangle").textContent = triangle;
+}
+</script>
+
+
+
+</body>
+</html>
