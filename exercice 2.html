@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>exercice 2</title>
+</head>
+<body>
+ 
+ 
+  <h1>  script JavaScript qui calcule et affiche la racine carrée du nombre saisi dans une balise</h1>
+
+ <p>Saisissez un nombre :</p>
+  <input type="number" id="nombre">
+
+  <p id="resultat"></p>
+
+  <script>
+    document.getElementById("nombre").addEventListener("input", function () {
+      let valeur = parseFloat(this.value);
+      let resultat = document.getElementById("resultat");
+
+      if (!isNaN(valeur) && valeur >= 0) {
+        resultat.innerText = "Racine carrée : " + Math.sqrt(valeur);
+      } else {
+        resultat.innerText = "";
+      }
+    });
+  </script>
+ 
+ 
+ 
+ 
+ 
+ <h1> Autre script pour arrondir le nombre saisi à la décimale la plus proche et affichez le résultat.</h1>
+ 
+   <!-- Partie Arrondi -->
+  <p>Saisissez un nombre :</p>
+  <input type="number" id="nombrearrondi">
+  <p id="arrondi"></p>
+
+  <hr>
+
+  <!-- Partie Génération aléatoire entre min et max -->
+  <p>Valeur minimale :</p>
+  <input type="number" id="min">
+
+  <p>Valeur maximale :</p>
+  <input type="number" id="max">
+
+  <br><br>
+  <button onclick="Aleatoire2()">Générer un nombre entre min et max</button>
+  <p id="alea"></p>
+
+  <script>
+    // Arrondi du nombre saisi
+    document.getElementById("nombrearrondi").addEventListener("input", function () {
+      let valeur = parseFloat(this.value);
+      let arrondi = document.getElementById("arrondi");
+
+      if (!isNaN(valeur) && valeur >= 0) {
+        arrondi.innerText = "Arrondi : " + Math.round(valeur);
+      } else {
+        arrondi.innerText = "";
+      }
+    });
+
+    // Fonction pour générer un nombre aléatoire entre min et max saisis
+    function Aleatoire2() {
+      const min = parseInt(document.getElementById("min").value);
+      const max = parseInt(document.getElementById("max").value);
+      const resultat = document.getElementById("alea");
+
+      if (!isNaN(min) && !isNaN(max) && min <= max) {
+        const nombre = Math.floor(Math.random() * (max - min + 1)) + min;
+        resultat.innerText = `Nombre aléatoire entre ${min} et ${max} : ${nombre}`;
+      } else {
+        resultat.innerText = "Veuillez entrer des valeurs valides (min ≤ max).";
+      }
+    }
+  </script>
+  
+  
+
+</body>
+</html>

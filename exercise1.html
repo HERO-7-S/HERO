@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercise 1</title>
+</head>
+<body>
+
+  <p>Saisissez une chaîne :</p>
+  <input type="text" id="texte">
+
+
+
+  <p>Longueur :</p>
+    <input type="text" id="longueur" readonly>
+
+
+  <p>3 premiers caractères :</p>
+  <input type="text" id="souschaine" readonly>
+
+  <script>
+    document.getElementById("texte").addEventListener("input", function () {
+      var chaine = this.value;
+
+      // Longueur
+      document.getElementById("longueur").value = chaine.length;
+
+      // 3 premiers caractères
+      document.getElementById("souschaine").value = chaine.substring(0, 3);
+    });
+  </script>
+  
+  
+  
+  
+  
+</body>
+</html>

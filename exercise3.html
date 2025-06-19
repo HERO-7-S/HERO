@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>exercice3</title>
+</head>
+<body>
+
+
+ <h3>Saisissez une date au format (JJ-MM-AAAA) :</h3>
+  <input type="text" id="dateInput" placeholder="Ex : 13-06-2025">
+  <button onclick="analyserDate()">Analyser</button>
+
+  <p id="jour"></p>
+  <p id="mois"></p>
+  <p id="annee"></p>
+  <p id="difference"></p>
+
+  <script>
+    function analyserDate() {
+      const moisLettres = [
+        "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+        "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+      ];
+
+      const dateStr = document.getElementById("dateInput").value;
+      const [jour, mois, annee] = dateStr.split("-").map(Number);
+
+      if (isNaN(jour) || isNaN(mois) || isNaN(annee)) {
+        alert("Veuillez saisir une date valide au format JJ-MM-AAAA.");
+        return;
+      }
+
+      const dateSaisie = new Date(annee, mois - 1, jour);
+
+      document.getElementById("jour").innerText = "Jour : " + dateSaisie.getDate();
+      document.getElementById("mois").innerText = "Mois : " + moisLettres[dateSaisie.getMonth()];
+      document.getElementById("annee").innerText = "Année : " + dateSaisie.getFullYear();
+
+      const aujourdHui = new Date();
+      const differenceMs = aujourdHui - dateSaisie;
+      const differenceJours = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
+
+      document.getElementById("difference").innerText =
+        `Différence avec aujourd'hui : ${differenceJours} jour(s)`;
+    }
+  </script>
+
+
+</body>
+</html>

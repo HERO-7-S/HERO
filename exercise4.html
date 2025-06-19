@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercice 4 - Manipulation de tableau</title>
+</head>
+<body>
+
+  <h2>Tableau de nombres</h2>
+  <p id="affichage"></p>
+
+  <!-- Ajouter un nombre -->
+  <input type="number" id="nouveauNombre" placeholder="Nombre à ajouter">
+  <button onclick="ajouterNombre()">Ajouter</button>
+
+  <br><br>
+
+  <!-- Supprimer un nombre -->
+  <input type="number" id="supprimerNombre" placeholder="Nombre à supprimer">
+  <button onclick="supprimerNombre()">Supprimer</button>
+
+  <script>
+    // Tableau initial
+    let tableau = [7, 3, 12, 5,9];
+
+    // Affiche le tableau dans l’ordre d’ajout
+    function afficherTableau() {
+      document.getElementById("affichage").innerText = "Tableau : " + tableau.join(", ");
+    }
+
+    // Ajouter un nombre à la fin
+    function ajouterNombre() {
+      const valeur = parseFloat(document.getElementById("nouveauNombre").value);
+      if (!isNaN(valeur)) {
+        tableau.push(valeur); // ajout à la fin
+        afficherTableau();
+        document.getElementById("nouveauNombre").value = "";
+      }
+    }
+
+    // Supprimer un nombre s'il existe
+    function supprimerNombre() {
+      const valeur = parseFloat(document.getElementById("supprimerNombre").value);
+      if (!isNaN(valeur)) {
+        const index = tableau.indexOf(valeur);
+        if (index !== -1) {
+          tableau.splice(index, 1);
+        }
+        afficherTableau();
+        document.getElementById("supprimerNombre").value = "";
+      }
+    }
+
+    // Affichage initial
+    afficherTableau();
+  </script>
+
+</body>
+</html>

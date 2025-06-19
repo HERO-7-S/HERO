@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>calculateur.html</title>
+</head>
+<body>
+
+  <h2>Calculateur de prêt hypothécaire</h2>
+
+  <label for="montant">Montant du prêt (FCFA) :</label><br>
+  <input type="number" id="montant"><br><br>
+
+  <label for="taux">Taux d'intérêt annuel (%) :</label><br>
+  <input type="number" id="taux" step="0.01"><br><br>
+
+  <label for="duree">Durée (années) :</label><br>
+  <input type="number" id="duree"><br><br>
+
+  <button onclick="calculerPaiement()">Calculer le paiement mensuel</button>
+
+  <p id="resultat"></p>
+
+  <script>
+    function calculerPaiement() {
+   const montant = parseFloat(document.getElementById("montant").value);
+  const tauxAnnuel = parseFloat(document.getElementById("taux").value);
+    const duree = parseInt(document.getElementById("duree").value);
+
+      // Validation
+  if (isNaN(montant) || montant <= 0) {
+        alert("Veuillez entrer un montant de prêt valide et positif.");
+        return;
+      }
+
+      if (isNaN(tauxAnnuel) || tauxAnnuel <= 0) {
+        alert("Veuillez entrer un taux d'intérêt annuel valide et positif.");
+        return;
+      }
+
+  if (isNaN(duree) || duree <= 0) {
+        alert("Veuillez entrer une durée de prêt valide en années.");
+        return;
+      }
+
+      // Calculs
+	  
+	  // Taux mensuel
+  const r = (tauxAnnuel / 100) / 12;          
+ // Nombre de paiements  
+  const n = duree * 12;   
+  
+  const M = montant * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+
+      // Affichage
+      document.getElementById("resultat").innerText =
+        "Paiement mensuel estimé : " + M.toFixed(2) + " FCFA";
+    }
+  </script>
+
+</body>
+</html>

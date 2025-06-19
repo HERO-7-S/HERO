@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>temps_reel.html</title>
+</head>
+<body>
+
+  <h3>Heure actuelle :</h3>
+  <input type="text" id="heure" readonly>
+
+  <script>
+    function afficherHeure() {
+      const maintenant = new Date();
+      const heures = String(maintenant.getHours()).padStart(2, '0');
+      const minutes = String(maintenant.getMinutes()).padStart(2, '0');
+      const secondes = String(maintenant.getSeconds()).padStart(2, '0');
+
+      const heureFormatee = `${heures}:${minutes}:${secondes}`;
+      document.getElementById("heure").value = heureFormatee;
+
+      // Relancer la fonction après 1000 millisecondes (1 seconde)
+      setTimeout(afficherHeure, 1000);
+    }
+
+    // Lancer la première fois
+    afficherHeure();
+  </script>
+
+</body>
+</html>
